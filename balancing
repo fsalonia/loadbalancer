@@ -1,0 +1,19 @@
+http {
+    upstream bolek {
+        server bolek;
+    }
+    upstream lolek {
+        server lolek;
+    }
+
+    server {
+        listen 80;
+
+        location /bolek {
+            proxy_pass http://bolek;
+        }
+        location /lolek {
+            proxy_pass http://bolek;
+        }
+    }
+}

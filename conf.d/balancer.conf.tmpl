@@ -1,0 +1,30 @@
+    upstream bolek {
+        {{range getvs "/hosts/bolek/*"}}
+            server {{.}}:80;
+        {{end}}
+    }
+    upstream lolek {
+        {{range getvs "/hosts/lolek/*"}}
+            server {{.}}:80;
+        {{end}}
+    }
+
+    server {
+        listen 80;
+        server_name localhost;
+
+        location /bolek/ {
+            proxy_pass http://bolek/;
+            proxy_redirect    off;
+            proxy_set_header  Host             $host;
+            proxy_set_header  X-Real-IP        $remote_addr;
+            proxy_set_header  X-Forwarded-For  $proxy_add_x_forwarded_for;
+        }
+        location /lolek/ {
+            proxy_pass http://lolek/;
+            proxy_redirect    off;
+            proxy_set_header  Host             $host;
+            proxy_set_header  X-Real-IP        $remote_addr;
+            proxy_set_header  X-Forwarded-For  $proxy_add_x_forwarded_for;
+        }
+    }

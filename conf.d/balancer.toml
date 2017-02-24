@@ -1,0 +1,10 @@
+[template]
+src = "balancer.conf.tmpl"
+dest = "/etc/nginx/conf.d/balancer.conf"
+owner = "nginx"
+mode = "0644"
+keys = [
+    "/hosts/bolek",
+    "/hosts/lolek"
+]
+reload_cmd = "/usr/sbin/service nginx stop && /usr/sbin/service nginx start"
