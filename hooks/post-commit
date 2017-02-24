@@ -1,0 +1,8 @@
+#!/bin/bash
+#Change the variables with the valid values and move the post-commit file to .git/hooks local folder
+#DO NOT CHANGE THIS FILE AND PUSH IT
+JENKINS_URL="0.0.0.0"
+JENKINS_ADMIN_USER="admin"
+JENKINS_ADMIN_PASSWORD="adminpassword"
+JENKINS_JOB_TOKEN="asdfghjkllqwerryuop1234567"
+curl -u ${JENKINS_ADMIN_USER}:${JENKINS_ADMIN_PASSWORD} http://${JENKINS_URL}:8080/job/Loadbalancer%20build%20and%20push/build?token=${JENKINS_JOB_TOKEN}
